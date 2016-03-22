@@ -43,6 +43,12 @@ location "http://download.eclipse.org/releases/mars/" {
 	org.eclipse.acceleo.feature.group lazy
 }
 
+// Amalgam
+location "http://download.eclipse.org/modeling/amalgam/updates/nightly/1.7.x/mars" {
+	org.eclipse.amalgam.explorer.activity.feature.group lazy
+}
+
+
 // EEF 1.5
 location "http://download.eclipse.org/releases/mars/" {
 	org.eclipse.emf.eef.runtime lazy
