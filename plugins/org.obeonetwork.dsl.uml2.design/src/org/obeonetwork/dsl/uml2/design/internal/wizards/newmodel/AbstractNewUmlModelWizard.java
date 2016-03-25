@@ -2,6 +2,7 @@ package org.obeonetwork.dsl.uml2.design.internal.wizards.newmodel;
 
 import java.lang.reflect.InvocationTargetException;
 
+import org.eclipse.amalgam.explorer.activity.ui.api.manager.ActivityExplorerManager;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
@@ -9,14 +10,10 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
-import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.ext.base.Option;
-import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
-import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.DView;
-import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.ui.wizards.newresource.BasicNewProjectResourceWizard;
@@ -50,27 +47,18 @@ public abstract class AbstractNewUmlModelWizard extends BasicNewProjectResourceW
 	 *
 	 * @param curProject
 	 *            The modeling project containing the representations file.
-	 * @param monitor
-	 *            a {@link IProgressMonitor} to show progression of first {@link DRepresentation} opening
 	 */
-	private void openDashboard(IProject curProject, IProgressMonitor monitor) {
+	void openDashboard(IProject curProject){
 		final Option<ModelingProject> opionalModelingProject = ModelingProject.asModelingProject(curProject);
 		if (opionalModelingProject.some()) {
 			final Session session = opionalModelingProject.get().getSession();
 			if (session != null) {
-				if (!session.getSelectedViews().isEmpty()) {
-					for (final DView view : session.getSelectedViews()) {
-						if (!view.getOwnedRepresentations().isEmpty()) {
-							for (final DRepresentation representation : view.getOwnedRepresentations()) {
-								final RepresentationDescription description = DialectManager.INSTANCE
-										.getDescription(representation);
-								if ("Dashboard".equals(description.getName())) { //$NON-NLS-1$
-									DialectUIManager.INSTANCE.openEditor(session, representation, monitor);
-									return;
-								}
-							}
-						}
-					}
+				final IEditorPart part = ActivityExplorerManager.INSTANCE.getEditorFromSession(session);
+				if (part != null) {
+					// Activity explorer already opened
+					PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().activate(part);
+				} else {
+					ActivityExplorerManager.INSTANCE.openEditor(session);
 				}
 			}
 		}
@@ -116,14 +104,14 @@ public abstract class AbstractNewUmlModelWizard extends BasicNewProjectResourceW
 				selectAndReveal(newUmlModelFile, PlatformUI.getWorkbench().getActiveWorkbenchWindow());
 
 				// Open the dashboard
-				openDashboard(project, monitor);
+				openDashboard(project);
 
 				// Open the contextual help
 				// Context ids are defined in the html/contexts.xml file in
 				// org.obeonetwork.dsl.uml2.design.doc project.
 				final String contextId = "org.obeonetwork.dsl.uml2.design.doc.Dashboard"; //$NON-NLS-1$
 				PlatformUI.getWorkbench().getHelpSystem()
-						.setHelp(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), contextId);
+				.setHelp(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), contextId);
 				PlatformUI.getWorkbench().getHelpSystem().displayDynamicHelp();
 			}
 		};
