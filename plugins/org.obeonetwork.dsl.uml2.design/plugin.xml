@@ -142,6 +142,16 @@ Contributors:
               id="org.obeonetwork.dsl.uml2.actions.newUmlModel"
               name="New UML Model">
         </command>
+        <command
+              id="frbDashboardCommand"
+              name="Open Dashboard">
+           <commandParameter
+                 id="frbDashboard.param.model"
+                 name="model"
+                 optional="true"
+                 typeId="org.obeonetwork.dsl.uml2.actions.openDashboard.param.modelType">
+           </commandParameter>
+        </command>
         <commandParameterType
               converter="org.obeonetwork.dsl.uml2.design.internal.commands.UmlElementConverter"
               id="org.obeonetwork.dsl.uml2.actions.openDashboard.param.modelType"
@@ -285,6 +295,15 @@ Contributors:
                class="org.obeonetwork.dsl.uml2.design.internal.commands.NewUmlModel"
                commandId="org.obeonetwork.dsl.uml2.actions.newUmlModel">
          </handler>
+         <handler
+               class="org.obeonetwork.dsl.uml2.design.dashboard.OpenDashboardFRB"
+               commandId="frbDashboardCommand">
+            <enabledWhen>
+               <reference
+                     definitionId="org.obeonetwork.dsl.uml2.design.DashboardsExistDefinition">
+               </reference>
+            </enabledWhen>
+         </handler>
    </extension>
   
   
@@ -407,6 +426,26 @@ Contributors:
                </visibleWhen>
             </command>
          </toolbar>
+         <toolbar
+               id="frb"
+               label="frb">
+            <command
+                  commandId="frbDashboardCommand"
+                  icon="icons/Dashboard.gif"
+                  label="DashboardFRB"
+                  style="pulldown"
+                  tooltip="Open UML Designer DashboardFRB">
+               <visibleWhen
+                     checkEnabled="false">
+                  <with
+                        variable="activeWorkbenchWindow.activePerspective">
+                     <equals
+                           value="org.eclipse.sirius.ui.tools.perspective.modeling">
+                     </equals>
+                  </with>
+               </visibleWhen>
+            </command>
+         </toolbar>
       </menuContribution>
       <menuContribution
             allPopups="false"
@@ -414,6 +453,14 @@ Contributors:
          <dynamic
                class="org.obeonetwork.dsl.uml2.design.internal.commands.DashboardContributionItems"
                id="org.obeonetwork.dsl.uml2.design.dynamicDashboard">
+         </dynamic>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="menu:frbDashboardCommand">
+         <dynamic
+               class="org.obeonetwork.dsl.uml2.design.dashboard.frbDashboardContributionItems"
+               id="org.obeonetwork.dsl.uml2.design.dynamicDashboardfrb">
          </dynamic>
       </menuContribution>
    </extension>
@@ -558,21 +605,24 @@ Contributors:
          point="org.eclipse.amalgam.explorer.activity.ui.pagesProvider">
       <Page
             class="org.eclipse.amalgam.explorer.activity.ui.api.editor.pages.BasicSessionActivityExplorerPage"
-            id="org.obeonetwork.dsl.uml2.design.CreationPage"
-            imageOff="icons/dashboard/CreateOff.gif"
-            imageOn="icons/dashboard/CreateOn.gif"
+            id="org.obeonetwork.dsl.uml2.design.OverviewPage"
+            imageOff="icons/Dashboard.gif"
+            imageOn="icons/Dashboard.gif"
             index="1"
-            tabName="Create"
-            title="Creation Page"
+            tabName="Overview"
+            title="Overview"
             viewer="true">
          <Description>
-            The Create section lists all the representations that could be created ordered by viewpoints : Capture (Package hierarchy, Use case diagram…), Design (Class diagram, Activity diagram,…).
+            The Overview section lists all the representations that could be created ordered by viewpoints : Capture (Package hierarchy, Use case diagram…), Design (Class diagram, Activity diagram,…).
          </Description>
          <Overview
                imageOff="icons/dashboard/CreateOff.gif"
                imageOn="icons/dashboard/CreateOn.gif">
             <Description>
-               Create new diagram
+               &lt;p&gt;
+&lt;b&gt;Overview&lt;/b&gt;&lt;br/&gt;
+The Overview section lists all the representations that could be created ordered by viewpoints : Capture (Package hierarchy, Use case diagram…), Design (Class diagram, Activity diagram,…).
+&lt;/p&gt;
             </Description>
          </Overview>
          <Section
@@ -747,31 +797,273 @@ Contributors:
          </Section>
       </Page>
       <Page
-            class="org.obeonetwork.dsl.uml2.design.dashboard.DiagramActivityExplorerPage"
-            id="org.obeonetwork.dsl.uml2.design.NavigationPage"
-            imageOff="icons/dashboard/NavigateOff.gif"
-            imageOn="icons/dashboard/NavigateOn.gif"
+            class="org.eclipse.amalgam.explorer.activity.ui.api.editor.pages.BasicSessionActivityExplorerPage"
+            id="org.obeonetwork.dsl.uml2.design.CapturePage"
+            imageOff="icons/dashboard/CreateOff.gif"
+            imageOn="icons/dashboard/CreateOn.gif"
             index="2"
-            tabName="Navigate"
-            title="Navigation Page"
+            tabName="Capture"
+            title="Capture"
             viewer="true">
          <Description>
-            The Navigate section lists all the existing representations.
+            To capture the actors and their interactions with the application and define the main structure of the application.
          </Description>
          <Overview
-               imageOff="icons/dashboard/NavigateOff.gif"
-               imageOn="icons/dashboard/NavigateOn.gif">
+               imageOff="icons/dashboard/CreateOff.gif"
+               imageOn="icons/dashboard/CreateOn.gif">
             <Description>
-               Navigate to existing diagram
+               &lt;p&gt;
+&lt;b&gt;Capture&lt;/b&gt;&lt;br/&gt;
+To capture the actors and their interactions with the application and define the main structure of the application.
+&lt;/p&gt;
             </Description>
          </Overview>
+         <Section
+               expanded="true"
+               filtering="true"
+               id="org.obeonetwork.dsl.uml2.design.CaptureSection"
+               index="1"
+               name="Capture">
+            <Description>
+               To capture the actors and their interactions with the application and define the main structure of the application.
+            </Description>
+            <Activity
+                  class="org.obeonetwork.dsl.uml2.design.dashboard.CreatePackageHierarchyDiagram"
+                  id="org.obeonetwork.dsl.uml2.design.CreatePackageHierarchyDiagram"
+                  image="icons/dashboard/capture/Package.gif"
+                  index="1"
+                  name="create new Package Hierarchy Diagram">
+               <Description>
+                  The package diagram is used to describe the structure of the system by showing the packages and their dependencies.
+               </Description>
+            </Activity>
+            <Activity
+                  class="org.obeonetwork.dsl.uml2.design.dashboard.CreateUseCaseDiagram"
+                  id="org.obeonetwork.dsl.uml2.design.CreateUseCaseDiagram"
+                  image="icons/dashboard/capture/UseCase.gif"
+                  index="2"
+                  name="create new UseCase Diagram">
+               <Description>
+                  The use case diagram is used to describe the interaction of the user and other applications with the specified system.
+               </Description>
+            </Activity>
+         </Section>
+      </Page>
+      <Page
+            class="org.eclipse.amalgam.explorer.activity.ui.api.editor.pages.BasicSessionActivityExplorerPage"
+            id="org.obeonetwork.dsl.uml2.design.DesignPage"
+            imageOff="icons/dashboard/CreateOff.gif"
+            imageOn="icons/dashboard/CreateOn.gif"
+            index="3"
+            tabName="Design"
+            title="Design"
+            viewer="true">
+         <Description>
+            To work on the fine grained structure and the behaviours of the application.
+         </Description>
+         <Overview
+               imageOff="icons/dashboard/CreateOff.gif"
+               imageOn="icons/dashboard/CreateOn.gif">
+            <Description>
+               &lt;p&gt;
+&lt;b&gt;Design&lt;/b&gt;&lt;br/&gt;
+To work on the fine grained structure and the behaviours of the application.
+&lt;/p&gt;
+            </Description>
+         </Overview>
+         <Section
+               expanded="true"
+               filtering="true"
+               id="org.obeonetwork.dsl.uml2.design.DesignSection"
+               index="1"
+               name="Design">
+            <Description>
+               To work on the fine grained structure and the behaviours of the application.
+            </Description>
+            <Activity
+                  class="org.obeonetwork.dsl.uml2.design.dashboard.CreateActivityDiagram"
+                  id="org.obeonetwork.dsl.uml2.design.CreateActivityDiagram"
+                  image="icons/dashboard/design/Activity.gif"
+                  index="1"
+                  name="Create new Activity diagram">
+               <Description>
+                  The activity diagram is part of the behavioral diagrams in UML Standard, it is used to represent workflows of stepwise activities.
+               </Description>
+            </Activity>
+            <Activity
+                  class="org.obeonetwork.dsl.uml2.design.dashboard.CreateClassDiagram"
+                  id="org.obeonetwork.dsl.uml2.design.CreateClassDiagram"
+                  image="icons/dashboard/design/Class.gif"
+                  index="2"
+                  name="Create new Class diagram">
+               <Description>
+                  The class diagram is used to describe the structure of the system by showing the classes, the interfaces, their attributes, their operations and their relationships.
+               </Description>
+            </Activity>
+            <Activity
+                  class="org.obeonetwork.dsl.uml2.design.dashboard.CreateComponentDiagram"
+                  id="org.obeonetwork.dsl.uml2.design.CreateComponentDiagram"
+                  image="icons/dashboard/design/Component.gif"
+                  index="3"
+                  name="Create new Component diagram">
+               <Description>
+                  The component diagram is used to describe the structure of the system by showing the components and their connectors.
+               </Description>
+            </Activity>
+            <Activity
+                  class="org.obeonetwork.dsl.uml2.design.dashboard.CreateCompositeStructureDiagram"
+                  id="org.obeonetwork.dsl.uml2.design.CreateCompositeStructureDiagram"
+                  image="icons/dashboard/design/InterfaceRealization.gif"
+                  index="4"
+                  name="Create new Comosite Structure diagram">
+               <Description>
+                  The composite structure diagram is used to describe the structure of the system by showing the internal structure of classes and the interfaces they used to collaborate.
+               </Description>
+            </Activity>
+            <Activity
+                  class="org.obeonetwork.dsl.uml2.design.dashboard.CreateDeploymentDiagram"
+                  id="org.obeonetwork.dsl.uml2.design.CreateDeploymentDiagram"
+                  image="icons/dashboard/design/Deployment.gif"
+                  index="5"
+                  name="Create new Deployment diagram">
+               <Description>
+                  The deployment diagram is used to describe the structure of the system by showing the physical deployment of artifacts on nodes.
+               </Description>
+            </Activity>
+            <Activity
+                  class="org.obeonetwork.dsl.uml2.design.dashboard.CreateSequenceDiagram"
+                  id="org.obeonetwork.dsl.uml2.design.CreateSequenceDiagram"
+                  image="icons/dashboard/design/Lifeline.gif"
+                  index="6"
+                  name="Create new Sequence diagram">
+               <Description>
+                  The sequence diagram is used to show how processes operate with one another and in what order.
+               </Description>
+            </Activity>
+            <Activity
+                  class="org.obeonetwork.dsl.uml2.design.dashboard.CreateStateMachineDiagram"
+                  id="org.obeonetwork.dsl.uml2.design.CreateStateMachineDiagram"
+                  image="icons/dashboard/design/StateMachine.gif"
+                  index="7"
+                  name="Create new State Machine diagram">
+               <Description>
+                  The statemachine diagram is used to represent the different states and transitions of a system.
+               </Description>
+            </Activity>
+         </Section>
+      </Page>
+      <Page
+            class="org.eclipse.amalgam.explorer.activity.ui.api.editor.pages.BasicSessionActivityExplorerPage"
+            id="org.obeonetwork.dsl.uml2.design.ReviewPage"
+            imageOff="icons/dashboard/CreateOff.gif"
+            imageOn="icons/dashboard/CreateOn.gif"
+            index="4"
+            tabName="Overview"
+            title="Review"
+            viewer="true">
+         <Description>
+            To document, get some overview and metrics of the application (non standard representations).
+         </Description>
+         <Overview
+               imageOff="icons/dashboard/CreateOff.gif"
+               imageOn="icons/dashboard/CreateOn.gif">
+            <Description>
+               &lt;p&gt;
+&lt;b&gt;Review&lt;/b&gt;&lt;br/&gt;
+To document, get some overview and metrics of the application (non standard representations).
+&lt;/p&gt;
+            </Description>
+         </Overview>
+         <Section
+               expanded="true"
+               filtering="true"
+               id="org.obeonetwork.dsl.uml2.design.ReviewSection"
+               index="1"
+               name="Review">
+            <Description>
+               To document, get some overview and metrics of the application (non standard representations).
+            </Description>
+            <Activity
+                  class="org.obeonetwork.dsl.uml2.design.dashboard.CreateDocumentationTable"
+                  id="org.obeonetwork.dsl.uml2.design.CreateDocumentationTable"
+                  image="icons/dashboard/review/Package.gif"
+                  index="1"
+                  name="create new Documentation table">
+               <Description>
+                  Create new documentation table
+               </Description>
+            </Activity>
+            <Activity
+                  class="org.obeonetwork.dsl.uml2.design.dashboard.CreateUseCaseCrossTable"
+                  id="org.obeonetwork.dsl.uml2.design.CreateUseCaseCrossTable"
+                  image="icons/dashboard/review/Class.gif"
+                  index="2"
+                  name="create new Use case cross table">
+               <Description>
+                  Create new Use Case cross table
+               </Description>
+            </Activity>
+            <Activity
+                  class="org.obeonetwork.dsl.uml2.design.dashboard.CreatePackageContainmentDiagram"
+                  id="org.obeonetwork.dsl.uml2.design.CreatePackageContainmentDiagram"
+                  image="icons/dashboard/review/Component.gif"
+                  index="3"
+                  name="create new Package containment diagram">
+               <Description>
+                  Create new Package containment diagram
+               </Description>
+            </Activity>
+         </Section>
+      </Page>
+      <Page
+            class="org.eclipse.amalgam.explorer.activity.ui.api.editor.pages.BasicSessionActivityExplorerPage"
+            id="org.obeonetwork.dsl.uml2.design.ExtendPage"
+            imageOff="icons/dashboard/CreateOff.gif"
+            imageOn="icons/dashboard/CreateOn.gif"
+            index="5"
+            tabName="Extend"
+            title="Extend"
+            viewer="true">
+         <Description>
+            To extend the UML standard for example by defining profile.
+         </Description>
+         <Overview
+               imageOff="icons/dashboard/CreateOff.gif"
+               imageOn="icons/dashboard/CreateOn.gif">
+            <Description>
+               &lt;p&gt;
+&lt;b&gt;Extend&lt;/b&gt;&lt;br/&gt;
+To extend the UML standard for example by defining profile.
+&lt;/p&gt;
+            </Description>
+         </Overview>
+         <Section
+               expanded="true"
+               filtering="true"
+               id="org.obeonetwork.dsl.uml2.design.ExtendSection"
+               index="1"
+               name="Extend">
+            <Description>
+               To extend the UML standard for example by defining profile.
+            </Description>
+            <Activity
+                  class="org.obeonetwork.dsl.uml2.design.dashboard.CreateProfileDiagram"
+                  id="org.obeonetwork.dsl.uml2.design.CreateProfileDiagram"
+                  image="icons/dashboard/extend/Profile.gif"
+                  index="1"
+                  name="Create new Profile diagram">
+               <Description>
+                  The profile diagram operates at the metamodel level to provide new stereotypes and profiles.
+               </Description>
+            </Activity>
+         </Section>
       </Page>
       <Page
             class="org.eclipse.amalgam.explorer.activity.ui.api.editor.pages.ActivityExplorerPage"
             id="org.obeonetwork.dsl.uml2.design.DocumentationPage"
             imageOff="icons/dashboard/HelpOff.gif"
             imageOn="icons/dashboard/HelpOn.gif"
-            index="3"
+            index="6"
             tabName="Documentation"
             title="Documentation Page"
             viewer="false">
@@ -782,7 +1074,7 @@ Contributors:
                imageOff="icons/dashboard/HelpOff.gif"
                imageOn="icons/dashboard/HelpOn.gif">
             <Description>
-               UML-Designer documentation
+               &lt;p&gt;&lt;b&gt;UML-Designer documentation&lt;/b&gt;&lt;/p&gt;
             </Description>
          </Overview>
          <Section
@@ -804,41 +1096,21 @@ Contributors:
                   Description body text
                </Description>
             </Activity>
-         </Section>
-         <Section
-               expanded="true"
-               filtering="false"
-               id="org.obeonetwork.dsl.uml2.design.ReferenceDocumentationSection"
-               index="2"
-               name="Reference Documentation">
-            <Description>
-               Description body text
-            </Description>
             <Activity
                   class="org.obeonetwork.dsl.uml2.design.dashboard.OpenReferenceDocumentationHelpActivity"
                   id="org.obeonetwork.dsl.uml2.design.OpenReferenceDocumentationActivity"
                   image="icons/dashboard/topic_small.gif"
-                  index="1"
+                  index="2"
                   name="Reference documentation">
                <Description>
                   Description body text
                </Description>
             </Activity>
-         </Section>
-         <Section
-               expanded="true"
-               filtering="false"
-               id="org.obeonetwork.dsl.uml2.design.GuidesSection"
-               index="3"
-               name="Guides">
-            <Description>
-               Description body text
-            </Description>
             <Activity
                   class="org.obeonetwork.dsl.uml2.design.dashboard.OpenUserGuideHelpActivity"
                   id="org.obeonetwork.dsl.uml2.design.OpenUserGuideActivity"
                   image="icons/dashboard/toc_open.gif"
-                  index="1"
+                  index="3"
                   name="User guide">
                <Description>
                   Description body text
@@ -848,36 +1120,17 @@ Contributors:
                   class="org.obeonetwork.dsl.uml2.design.dashboard.OpenDeveloperGuideHelpActivity"
                   id="org.obeonetwork.dsl.uml2.design.OpenDeveloperGuideActivity"
                   image="icons/dashboard/toc_open.gif"
-                  index="2"
+                  index="4"
                   name="Developer guide">
                <Description>
                   Description body text
                </Description>
             </Activity>
-         </Section>
-         <Section
-               expanded="true"
-               filtering="false"
-               id="org.obeonetwork.dsl.uml2.design.SupportSection"
-               index="4"
-               name="Support">
-            <Description>
-               Description body text
-            </Description>
             <Activity
                   class="org.obeonetwork.dsl.uml2.design.dashboard.OpenSupportHelpActivity"
                   id="org.obeonetwork.dsl.uml2.design.OpenSupportActivity"
                   image="icons/dashboard/topic_small.gif"
-                  index="1"
-                  name="Support">
-               <Description>
-                  Description body text
-               </Description>
-            </Activity>
-            <Activity
-                  class="org.obeonetwork.dsl.uml2.design.dashboard.OpenSupportHelpActivity"
-                  id="org.obeonetwork.dsl.uml2.design.OpenSupportActivity"
-                  index="1"
+                  index="5"
                   name="Support">
                <Description>
                   Description body text
