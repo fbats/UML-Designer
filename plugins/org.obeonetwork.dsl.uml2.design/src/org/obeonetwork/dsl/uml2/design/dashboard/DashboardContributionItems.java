@@ -34,24 +34,20 @@ import com.google.common.collect.Maps;
  *
  * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
-public class frbDashboardContributionItems extends CompoundContributionItem {
+public class DashboardContributionItems extends CompoundContributionItem {
 	/**
 	 * Open dashboard command.
 	 */
-	// public static final String OPEN_DASHBOARD_CMD_ID = "org.obeonetwork.dsl.uml2.actions.openDashboard";
-	// //$NON-NLS-1$
-	public static final String OPEN_DASHBOARD_CMD_ID = "frbDashboardCommand"; //$NON-NLS-1$
+	public static final String OPEN_DASHBOARD_CMD_ID = "org.obeonetwork.dsl.uml2.actions.openDashboard";//$NON-NLS-1$
 	/**
 	 * Model parameter.
 	 */
-	// public static final String OPEN_DASHBOARD_CMD_PARAM_MODEL_KEY =
-	// "org.obeonetwork.dsl.uml2.actions.openDashboard.param.model"; //$NON-NLS-1$
-	public static final String OPEN_DASHBOARD_CMD_PARAM_MODEL_KEY = "frbDashboard.param.model"; //$NON-NLS-1$
+	public static final String OPEN_DASHBOARD_CMD_PARAM_MODEL_KEY = "org.obeonetwork.dsl.uml2.actions.openDashboard.param.model"; //$NON-NLS-1$
 
 	/**
 	 * Constructor.
 	 */
-	public frbDashboardContributionItems() {
+	public DashboardContributionItems() {
 	}
 
 	/**
@@ -59,7 +55,7 @@ public class frbDashboardContributionItems extends CompoundContributionItem {
 	 *
 	 * @param id
 	 */
-	public frbDashboardContributionItems(final String id) {
+	public DashboardContributionItems(final String id) {
 		super(id);
 	}
 

@@ -125,16 +125,6 @@ Contributors:
               name="Create State Machine Diagram">
         </command>
         <command
-              id="org.obeonetwork.dsl.uml2.actions.openDashboard"
-              name="Open Dashboard">
-           <commandParameter
-                 id="org.obeonetwork.dsl.uml2.actions.openDashboard.param.model"
-                 name="model"
-                 optional="true"
-                 typeId="org.obeonetwork.dsl.uml2.actions.openDashboard.param.modelType">
-           </commandParameter>
-        </command>
-        <command
               id="org.obeonetwork.dsl.uml2.actions.newUmlProject"
               name="New UML Project">
         </command>
@@ -143,10 +133,10 @@ Contributors:
               name="New UML Model">
         </command>
         <command
-              id="frbDashboardCommand"
+              id="org.obeonetwork.dsl.uml2.actions.openDashboard"
               name="Open Dashboard">
            <commandParameter
-                 id="frbDashboard.param.model"
+                 id="org.obeonetwork.dsl.uml2.actions.openDashboard.param.model"
                  name="model"
                  optional="true"
                  typeId="org.obeonetwork.dsl.uml2.actions.openDashboard.param.modelType">
@@ -279,15 +269,6 @@ Contributors:
             </enabledWhen>
          </handler>
          <handler
-               class="org.obeonetwork.dsl.uml2.design.internal.commands.OpenDashboard"
-               commandId="org.obeonetwork.dsl.uml2.actions.openDashboard">
-            <enabledWhen>
-               <reference
-                     definitionId="org.obeonetwork.dsl.uml2.design.DashboardsExistDefinition">
-               </reference>
-            </enabledWhen>
-         </handler>
-         <handler
                class="org.obeonetwork.dsl.uml2.design.internal.commands.NewUmlProject"
                commandId="org.obeonetwork.dsl.uml2.actions.newUmlProject">
          </handler>
@@ -297,7 +278,7 @@ Contributors:
          </handler>
          <handler
                class="org.obeonetwork.dsl.uml2.design.dashboard.OpenDashboardFRB"
-               commandId="frbDashboardCommand">
+               commandId="org.obeonetwork.dsl.uml2.actions.openDashboard">
             <enabledWhen>
                <reference
                      definitionId="org.obeonetwork.dsl.uml2.design.UMLViewpointEnabledDefinition">
@@ -426,41 +407,13 @@ Contributors:
                </visibleWhen>
             </command>
          </toolbar>
-         <toolbar
-               id="frb"
-               label="frb">
-            <command
-                  commandId="frbDashboardCommand"
-                  icon="icons/Dashboard.gif"
-                  label="DashboardFRB"
-                  style="pulldown"
-                  tooltip="Open UML Designer Dashboard">
-               <visibleWhen
-                     checkEnabled="false">
-                  <with
-                        variable="activeWorkbenchWindow.activePerspective">
-                     <equals
-                           value="org.eclipse.sirius.ui.tools.perspective.modeling">
-                     </equals>
-                  </with>
-               </visibleWhen>
-            </command>
-         </toolbar>
       </menuContribution>
       <menuContribution
             allPopups="false"
             locationURI="menu:org.obeonetwork.dsl.uml2.actions.openDashboard">
          <dynamic
-               class="org.obeonetwork.dsl.uml2.design.internal.commands.DashboardContributionItems"
+               class="org.obeonetwork.dsl.uml2.design.dashboard.DashboardContributionItems"
                id="org.obeonetwork.dsl.uml2.design.dynamicDashboard">
-         </dynamic>
-      </menuContribution>
-      <menuContribution
-            allPopups="false"
-            locationURI="menu:frbDashboardCommand">
-         <dynamic
-               class="org.obeonetwork.dsl.uml2.design.dashboard.frbDashboardContributionItems"
-               id="org.obeonetwork.dsl.uml2.design.dynamicDashboardfrb">
          </dynamic>
       </menuContribution>
    </extension>
@@ -478,13 +431,6 @@ Contributors:
              id="org.obeonetwork.dsl.uml2.design.UMLViewpointEnabled"
              namespace="org.obeonetwork.dsl.uml2.design"
              properties="viewpointEnabled"
-             type="java.lang.Object">
-       </propertyTester>
-       <propertyTester
-             class="org.obeonetwork.dsl.uml2.design.internal.testers.DashboardPropertyTester"
-             id="org.obeonetwork.dsl.uml2.design.DashboardsExist"
-             namespace="org.obeonetwork.dsl.uml2.design"
-             properties="dashboardsExist"
              type="java.lang.Object">
        </propertyTester>
     </extension>

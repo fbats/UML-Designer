@@ -28,7 +28,7 @@ public class OpenDashboardFRB extends AbstractHandler {
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		// Get for which project we should open the dashboard
 		final String paramModel = event
-				.getParameter(frbDashboardContributionItems.OPEN_DASHBOARD_CMD_PARAM_MODEL_KEY);
+				.getParameter(DashboardContributionItems.OPEN_DASHBOARD_CMD_PARAM_MODEL_KEY);
 		final UmlElementConverter converter = new UmlElementConverter();
 		try {
 			final EObject eObj = (EObject)converter.convertToObject(paramModel);
