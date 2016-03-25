@@ -300,7 +300,7 @@ Contributors:
                commandId="frbDashboardCommand">
             <enabledWhen>
                <reference
-                     definitionId="org.obeonetwork.dsl.uml2.design.DashboardsExistDefinition">
+                     definitionId="org.obeonetwork.dsl.uml2.design.UMLViewpointEnabledDefinition">
                </reference>
             </enabledWhen>
          </handler>
@@ -434,7 +434,7 @@ Contributors:
                   icon="icons/Dashboard.gif"
                   label="DashboardFRB"
                   style="pulldown"
-                  tooltip="Open UML Designer DashboardFRB">
+                  tooltip="Open UML Designer Dashboard">
                <visibleWhen
                      checkEnabled="false">
                   <with
@@ -472,6 +472,13 @@ Contributors:
              namespace="org.obeonetwork.dsl.uml2.design"
              properties="Capture,Design,Review,Extend"
              type="org.eclipse.uml2.uml.Element">
+       </propertyTester>
+       <propertyTester
+             class="org.obeonetwork.dsl.uml2.design.internal.testers.UMLViewpointEnablementPropertyTester"
+             id="org.obeonetwork.dsl.uml2.design.UMLViewpointEnabled"
+             namespace="org.obeonetwork.dsl.uml2.design"
+             properties="viewpointEnabled"
+             type="java.lang.Object">
        </propertyTester>
        <propertyTester
              class="org.obeonetwork.dsl.uml2.design.internal.testers.DashboardPropertyTester"
@@ -539,6 +546,13 @@ Contributors:
          <test
                forcePluginActivation="true"
                property="org.obeonetwork.dsl.uml2.design.dashboardsExist">
+         </test>
+      </definition>
+      <definition
+            id="org.obeonetwork.dsl.uml2.design.UMLViewpointEnabledDefinition">
+         <test
+               forcePluginActivation="true"
+               property="org.obeonetwork.dsl.uml2.design.viewpointEnabled">
          </test>
       </definition>
    </extension>
