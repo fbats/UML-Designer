@@ -10,8 +10,19 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.design.dashboard;
 
+/**
+ * Link to open getting start help.
+ *
+ * @author Frederic Bats <a href="mailto:frederic.bats@obeo.fr">frederic.bats@obeo.fr</a>
+ */
 public class OpenGettingStartedHelpActivity extends OpenContextHelp {
+
+	private static final String GETTING_START = "GettingStarted";//$NON-NLS-1$
+
+	/**
+	 * Constructor.
+	 */
 	public OpenGettingStartedHelpActivity() {
-		super("GettingStarted");
+		super(GETTING_START);
 	}
 }

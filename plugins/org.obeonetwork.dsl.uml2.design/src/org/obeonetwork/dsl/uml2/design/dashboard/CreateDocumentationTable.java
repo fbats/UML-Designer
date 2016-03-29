@@ -12,9 +12,16 @@ package org.obeonetwork.dsl.uml2.design.dashboard;
 
 import org.eclipse.amalgam.explorer.activity.ui.api.hyperlinkadapter.NewDiagramHyperLinkAdapter;
 
+/**
+ * Link to create a documentation table.
+ *
+ * @author Frederic Bats <a href="mailto:frederic.bats@obeo.fr">frederic.bats@obeo.fr</a>
+ */
 public class CreateDocumentationTable extends NewDiagramHyperLinkAdapter {
+	private static final String DOCUMENTATION_TABLE = "Documentation Table"; //$NON-NLS-1$
+
 	@Override
 	public String getRepresentationName() {
-		return "Documentation Table"; //$NON-NLS-1$
+		return DOCUMENTATION_TABLE;
 	}
 }

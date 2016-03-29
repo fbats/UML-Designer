@@ -12,9 +12,16 @@ package org.obeonetwork.dsl.uml2.design.dashboard;
 
 import org.eclipse.amalgam.explorer.activity.ui.api.hyperlinkadapter.NewDiagramHyperLinkAdapter;
 
+/**
+ * Link to create a Package Containment diagram.
+ *
+ * @author Frederic Bats <a href="mailto:frederic.bats@obeo.fr">frederic.bats@obeo.fr</a>
+ */
 public class CreatePackageContainmentDiagram extends NewDiagramHyperLinkAdapter {
+	private static final String PACKAGE_CONTAINMENT = "Package Containment"; //$NON-NLS-1$
+
 	@Override
 	public String getRepresentationName() {
-		return "Package Containment"; //$NON-NLS-1$
+		return PACKAGE_CONTAINMENT;
 	}
 }

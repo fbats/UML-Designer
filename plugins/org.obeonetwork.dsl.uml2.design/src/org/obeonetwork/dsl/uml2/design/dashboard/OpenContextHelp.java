@@ -15,11 +15,21 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.forms.events.HyperlinkEvent;
-import org.eclipse.ui.forms.events.IHyperlinkListener;
 
-public class OpenContextHelp extends BlankHyperLinkAdapter implements IHyperlinkListener {
+/**
+ * Link to open help context.
+ *
+ * @author Frederic Bats <a href="mailto:frederic.bats@obeo.fr">frederic.bats@obeo.fr</a>
+ */
+public class OpenContextHelp extends BlankHyperLinkAdapter {
 	private final String contextId;
 
+	/**
+	 * Constructor.
+	 *
+	 * @param contextId
+	 *            context id
+	 */
 	public OpenContextHelp(String contextId){
 		// Context ids are defined in the html/contexts.xml file in
 		// org.obeonetwork.dsl.uml2.design.doc project.

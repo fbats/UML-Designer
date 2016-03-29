@@ -25,7 +25,14 @@ import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.UMLFactory;
 
+/**
+ * Link to create a Profile diagram.
+ *
+ * @author Frederic Bats <a href="mailto:frederic.bats@obeo.fr">frederic.bats@obeo.fr</a>
+ */
 public class CreateProfileDiagram extends NewDiagramHyperLinkAdapter {
+	private static final String PROFILE_DIAGRAM = "Profile Diagram"; //$NON-NLS-1$
+
 	@Override
 	protected boolean createDiagram(EObject project, Session session) {
 		if (!(project instanceof Package)) {
@@ -58,6 +65,6 @@ public class CreateProfileDiagram extends NewDiagramHyperLinkAdapter {
 
 	@Override
 	public String getRepresentationName() {
-		return "Profile Diagram"; //$NON-NLS-1$
+		return PROFILE_DIAGRAM;
 	}
 }

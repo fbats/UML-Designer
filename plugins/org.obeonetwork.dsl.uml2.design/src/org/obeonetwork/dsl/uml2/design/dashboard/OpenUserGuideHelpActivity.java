@@ -10,8 +10,18 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.design.dashboard;
 
+/**
+ * Link to open user guide.
+ *
+ * @author Frederic Bats <a href="mailto:frederic.bats@obeo.fr">frederic.bats@obeo.fr</a>
+ */
 public class OpenUserGuideHelpActivity extends OpenContextHelp {
+	private static final String USER_GUIDE = "UserGuide"; //$NON-NLS-1$
+
+	/**
+	 * Constructor.
+	 */
 	public OpenUserGuideHelpActivity() {
-		super("UserGuide");
+		super(USER_GUIDE);
 	}
 }

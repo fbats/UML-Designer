@@ -10,8 +10,18 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.design.dashboard;
 
+/**
+ * Link to open support help.
+ *
+ * @author Frederic Bats <a href="mailto:frederic.bats@obeo.fr">frederic.bats@obeo.fr</a>
+ */
 public class OpenSupportHelpActivity extends OpenContextHelp {
+	private static final String SUPPORT = "Support";//$NON-NLS-1$
+
+	/**
+	 * Constructor.
+	 */
 	public OpenSupportHelpActivity() {
-		super("Support");
+		super(SUPPORT);
 	}
 }

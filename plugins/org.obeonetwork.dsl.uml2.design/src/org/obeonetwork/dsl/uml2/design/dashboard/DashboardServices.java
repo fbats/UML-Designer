@@ -21,16 +21,21 @@ import org.eclipse.uml2.uml.resource.UMLResource;
 
 import com.google.common.collect.Lists;
 
-public class FrbDashboardServices {
+/**
+ * A set of services to handle the Dashboard.
+ *
+ * @author Frederic Bats <a href="mailto:frederic.bats@obeo.fr">frederic.bats@obeo.fr</a>
+ */
+public class DashboardServices {
 	/**
 	 * A singleton instance to be accessed by other java services.
 	 */
-	public static final FrbDashboardServices INSTANCE = new FrbDashboardServices();
+	public static final DashboardServices INSTANCE = new DashboardServices();
 
 	/**
 	 * Hidden constructor.
 	 */
-	private FrbDashboardServices() {
+	private DashboardServices() {
 
 	}
 

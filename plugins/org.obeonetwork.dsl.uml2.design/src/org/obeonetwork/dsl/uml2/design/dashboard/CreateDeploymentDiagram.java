@@ -12,9 +12,16 @@ package org.obeonetwork.dsl.uml2.design.dashboard;
 
 import org.eclipse.amalgam.explorer.activity.ui.api.hyperlinkadapter.NewDiagramHyperLinkAdapter;
 
+/**
+ * Link to create a Deployment diagram.
+ *
+ * @author Frederic Bats <a href="mailto:frederic.bats@obeo.fr">frederic.bats@obeo.fr</a>
+ */
 public class CreateDeploymentDiagram extends NewDiagramHyperLinkAdapter {
+	private static final String DEPLOYMENT_DIAGRAM = "Deployment Diagram"; //$NON-NLS-1$
+
 	@Override
 	public String getRepresentationName() {
-		return "Deployment Diagram"; //$NON-NLS-1$
+		return DEPLOYMENT_DIAGRAM;
 	}
 }

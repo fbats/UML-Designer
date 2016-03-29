@@ -23,7 +23,7 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.CompoundContributionItem;
 import org.eclipse.ui.menus.CommandContributionItem;
 import org.eclipse.ui.menus.CommandContributionItemParameter;
-import org.obeonetwork.dsl.uml2.design.dashboard.FrbDashboardServices;
+import org.obeonetwork.dsl.uml2.design.dashboard.DashboardServices;
 import org.obeonetwork.dsl.uml2.design.internal.services.LogServices;
 
 import com.google.common.collect.Lists;
@@ -63,7 +63,7 @@ public class DashboardContributionItems extends CompoundContributionItem {
 	protected IContributionItem[] getContributionItems() {
 		final List<IContributionItem> menuItems = Lists.newArrayList();
 		// Get all available dashboards
-		final List<EObject> umlModelRoots = FrbDashboardServices.INSTANCE.getUmlModels();
+		final List<EObject> umlModelRoots = DashboardServices.INSTANCE.getUmlModels();
 		for (final EObject eObject : umlModelRoots) {
 			// Get the project name
 			final IFile resourceFile = ResourcesPlugin.getWorkspace().getRoot()

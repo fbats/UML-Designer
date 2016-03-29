@@ -12,9 +12,16 @@ package org.obeonetwork.dsl.uml2.design.dashboard;
 
 import org.eclipse.amalgam.explorer.activity.ui.api.hyperlinkadapter.NewDiagramHyperLinkAdapter;
 
+/**
+ * Link to create a Class diagram.
+ *
+ * @author Frederic Bats <a href="mailto:frederic.bats@obeo.fr">frederic.bats@obeo.fr</a>
+ */
 public class CreateClassDiagram extends NewDiagramHyperLinkAdapter {
+	private static final String CLASS_DIAGRAM = "Class Diagram"; //$NON-NLS-1$
+
 	@Override
 	public String getRepresentationName() {
-		return "Class Diagram"; //$NON-NLS-1$
+		return CLASS_DIAGRAM;
 	}
 }

@@ -12,9 +12,15 @@ package org.obeonetwork.dsl.uml2.design.dashboard;
 
 import org.eclipse.amalgam.explorer.activity.ui.api.hyperlinkadapter.NewDiagramHyperLinkAdapter;
 
+/**
+ * Link to create a use case cross table.
+ *
+ * @author Frederic Bats <a href="mailto:frederic.bats@obeo.fr">frederic.bats@obeo.fr</a>
+ */
 public class CreateUseCaseCrossTable extends NewDiagramHyperLinkAdapter {
+	private static final String USECASE_CROSS_TABLE = "Use Case Cross Table"; //$NON-NLS-1$
 	@Override
 	public String getRepresentationName() {
-		return "Use Case Cross Table"; //$NON-NLS-1$
+		return USECASE_CROSS_TABLE;
 	}
 }

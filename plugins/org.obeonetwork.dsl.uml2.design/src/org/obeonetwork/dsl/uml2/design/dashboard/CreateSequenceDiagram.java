@@ -22,6 +22,11 @@ import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.obeonetwork.dsl.uml2.design.internal.services.ElementServices;
 
+/**
+ * Link to create a Sequence diagram.
+ *
+ * @author Frederic Bats <a href="mailto:frederic.bats@obeo.fr">frederic.bats@obeo.fr</a>
+ */
 public class CreateSequenceDiagram extends NewDiagramHyperLinkAdapter {
 	private static final String SEQUENCE_DIAGRAM = "Sequence Diagram"; //$NON-NLS-1$
 

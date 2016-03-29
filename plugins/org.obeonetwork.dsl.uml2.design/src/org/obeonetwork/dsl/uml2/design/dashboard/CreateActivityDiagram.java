@@ -25,7 +25,14 @@ import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.UMLFactory;
 
+/**
+ * Link to create an activity diagram.
+ *
+ * @author Frederic Bats <a href="mailto:frederic.bats@obeo.fr">frederic.bats@obeo.fr</a>
+ */
 public class CreateActivityDiagram extends NewDiagramHyperLinkAdapter {
+	private static final String ACTIVITY_DIAGRAM = "Activity Diagram"; //$NON-NLS-1$
+
 	@Override
 	protected boolean createDiagram(EObject project, Session session) {
 		if (!(project instanceof Package)) {
@@ -68,6 +75,6 @@ public class CreateActivityDiagram extends NewDiagramHyperLinkAdapter {
 
 	@Override
 	public String getRepresentationName() {
-		return "Activity Diagram"; //$NON-NLS-1$
+		return ACTIVITY_DIAGRAM;
 	}
 }

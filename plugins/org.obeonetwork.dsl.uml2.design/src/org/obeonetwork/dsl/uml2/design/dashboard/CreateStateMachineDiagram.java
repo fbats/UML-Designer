@@ -26,7 +26,14 @@ import org.eclipse.uml2.uml.Region;
 import org.eclipse.uml2.uml.StateMachine;
 import org.eclipse.uml2.uml.UMLFactory;
 
+/**
+ * Link to create a State Machine diagram.
+ *
+ * @author Frederic Bats <a href="mailto:frederic.bats@obeo.fr">frederic.bats@obeo.fr</a>
+ */
 public class CreateStateMachineDiagram extends NewDiagramHyperLinkAdapter {
+	private static final String STATEMACHINE_DIAGRAM = "State Machine Diagram"; //$NON-NLS-1$
+
 	@Override
 	protected boolean createDiagram(EObject project, Session session) {
 		if (!(project instanceof Package)) {
@@ -45,7 +52,7 @@ public class CreateStateMachineDiagram extends NewDiagramHyperLinkAdapter {
 
 	@Override
 	public String getRepresentationName() {
-		return "State Machine Diagram"; //$NON-NLS-1$
+		return STATEMACHINE_DIAGRAM;
 	}
 
 	/**

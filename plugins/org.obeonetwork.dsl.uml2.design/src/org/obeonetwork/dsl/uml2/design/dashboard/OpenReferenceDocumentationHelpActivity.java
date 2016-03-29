@@ -10,8 +10,18 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.design.dashboard;
 
+/**
+ * Link to open reference documentation help.
+ *
+ * @author Frederic Bats <a href="mailto:frederic.bats@obeo.fr">frederic.bats@obeo.fr</a>
+ */
 public class OpenReferenceDocumentationHelpActivity extends OpenContextHelp {
+	private static final String REFERENCE_DOCUMENTATION = "ReferenceDocumentation";//$NON-NLS-1$
+
+	/**
+	 * Constructor.
+	 */
 	public OpenReferenceDocumentationHelpActivity() {
-		super("ReferenceDocumentation");
+		super(REFERENCE_DOCUMENTATION);
 	}
 }

@@ -22,6 +22,11 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PlatformUI;
 import org.obeonetwork.dsl.uml2.design.internal.services.LogServices;
 
+/**
+ * Open a Dashboard based on activity explorer.
+ *
+ * @author Frederic Bats <a href="mailto:frederic.bats@obeo.fr">frederic.bats@obeo.fr</a>
+ */
 public class OpenDashboard extends AbstractHandler {
 
 	public Object execute(ExecutionEvent event) throws ExecutionException {
