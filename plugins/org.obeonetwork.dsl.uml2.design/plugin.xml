@@ -603,6 +603,9 @@ The Overview section lists all the representations that could be created ordered
                <Description>
                   The package diagram is used to describe the structure of the system by showing the packages and their dependencies.
                </Description>
+               <Predicate
+                     class="org.obeonetwork.dsl.uml2.design.dashboard.CaptureViewPointPredicate">
+               </Predicate>
             </Activity>
             <Activity
                   class="org.obeonetwork.dsl.uml2.design.dashboard.CreateUseCaseDiagram"
@@ -613,6 +616,9 @@ The Overview section lists all the representations that could be created ordered
                <Description>
                   The use case diagram is used to describe the interaction of the user and other applications with the specified system.
                </Description>
+               <Predicate
+                     class="org.obeonetwork.dsl.uml2.design.dashboard.CaptureViewPointPredicate">
+               </Predicate>
             </Activity>
          </Section>
          <Section
@@ -633,6 +639,9 @@ The Overview section lists all the representations that could be created ordered
                <Description>
                   The activity diagram is part of the behavioral diagrams in UML Standard, it is used to represent workflows of stepwise activities.
                </Description>
+               <Predicate
+                     class="org.obeonetwork.dsl.uml2.design.dashboard.DesignViewPointPredicate">
+               </Predicate>
             </Activity>
             <Activity
                   class="org.obeonetwork.dsl.uml2.design.dashboard.CreateClassDiagram"
@@ -643,6 +652,9 @@ The Overview section lists all the representations that could be created ordered
                <Description>
                   The class diagram is used to describe the structure of the system by showing the classes, the interfaces, their attributes, their operations and their relationships.
                </Description>
+               <Predicate
+                     class="org.obeonetwork.dsl.uml2.design.dashboard.DesignViewPointPredicate">
+               </Predicate>
             </Activity>
             <Activity
                   class="org.obeonetwork.dsl.uml2.design.dashboard.CreateComponentDiagram"
@@ -653,6 +665,9 @@ The Overview section lists all the representations that could be created ordered
                <Description>
                   The component diagram is used to describe the structure of the system by showing the components and their connectors.
                </Description>
+               <Predicate
+                     class="org.obeonetwork.dsl.uml2.design.dashboard.DesignViewPointPredicate">
+               </Predicate>
             </Activity>
             <Activity
                   class="org.obeonetwork.dsl.uml2.design.dashboard.CreateCompositeStructureDiagram"
@@ -663,6 +678,9 @@ The Overview section lists all the representations that could be created ordered
                <Description>
                   The composite structure diagram is used to describe the structure of the system by showing the internal structure of classes and the interfaces they used to collaborate.
                </Description>
+               <Predicate
+                     class="org.obeonetwork.dsl.uml2.design.dashboard.DesignViewPointPredicate">
+               </Predicate>
             </Activity>
             <Activity
                   class="org.obeonetwork.dsl.uml2.design.dashboard.CreateDeploymentDiagram"
@@ -673,6 +691,9 @@ The Overview section lists all the representations that could be created ordered
                <Description>
                   The deployment diagram is used to describe the structure of the system by showing the physical deployment of artifacts on nodes.
                </Description>
+               <Predicate
+                     class="org.obeonetwork.dsl.uml2.design.dashboard.DesignViewPointPredicate">
+               </Predicate>
             </Activity>
             <Activity
                   class="org.obeonetwork.dsl.uml2.design.dashboard.CreateSequenceDiagram"
@@ -683,6 +704,9 @@ The Overview section lists all the representations that could be created ordered
                <Description>
                   The sequence diagram is used to show how processes operate with one another and in what order.
                </Description>
+               <Predicate
+                     class="org.obeonetwork.dsl.uml2.design.dashboard.DesignViewPointPredicate">
+               </Predicate>
             </Activity>
             <Activity
                   class="org.obeonetwork.dsl.uml2.design.dashboard.CreateStateMachineDiagram"
@@ -693,6 +717,9 @@ The Overview section lists all the representations that could be created ordered
                <Description>
                   The statemachine diagram is used to represent the different states and transitions of a system.
                </Description>
+               <Predicate
+                     class="org.obeonetwork.dsl.uml2.design.dashboard.DesignViewPointPredicate">
+               </Predicate>
             </Activity>
          </Section>
          <Section
@@ -713,6 +740,9 @@ The Overview section lists all the representations that could be created ordered
                <Description>
                   Create new documentation table
                </Description>
+               <Predicate
+                     class="org.obeonetwork.dsl.uml2.design.dashboard.ReviewViewPointPredicate">
+               </Predicate>
             </Activity>
             <Activity
                   class="org.obeonetwork.dsl.uml2.design.dashboard.CreateUseCaseCrossTable"
@@ -723,6 +753,9 @@ The Overview section lists all the representations that could be created ordered
                <Description>
                   Create new Use Case cross table
                </Description>
+               <Predicate
+                     class="org.obeonetwork.dsl.uml2.design.dashboard.ReviewViewPointPredicate">
+               </Predicate>
             </Activity>
             <Activity
                   class="org.obeonetwork.dsl.uml2.design.dashboard.CreatePackageContainmentDiagram"
@@ -733,6 +766,9 @@ The Overview section lists all the representations that could be created ordered
                <Description>
                   Create new Package containment diagram
                </Description>
+               <Predicate
+                     class="org.obeonetwork.dsl.uml2.design.dashboard.ReviewViewPointPredicate">
+               </Predicate>
             </Activity>
          </Section>
          <Section
@@ -753,6 +789,9 @@ The Overview section lists all the representations that could be created ordered
                <Description>
                   The profile diagram operates at the metamodel level to provide new stereotypes and profiles.
                </Description>
+               <Predicate
+                     class="org.obeonetwork.dsl.uml2.design.dashboard.ExtendViewPointPredicate">
+               </Predicate>
             </Activity>
          </Section>
       </Page>
@@ -808,6 +847,9 @@ To capture the actors and their interactions with the application and define the
                </Description>
             </Activity>
          </Section>
+         <Predicate
+               class="org.obeonetwork.dsl.uml2.design.dashboard.CaptureViewPointPredicate">
+         </Predicate>
       </Page>
       <Page
             class="org.eclipse.amalgam.explorer.activity.ui.api.editor.pages.BasicSessionActivityExplorerPage"
@@ -911,6 +953,9 @@ To work on the fine grained structure and the behaviours of the application.
                </Description>
             </Activity>
          </Section>
+         <Predicate
+               class="org.obeonetwork.dsl.uml2.design.dashboard.DesignViewPointPredicate">
+         </Predicate>
       </Page>
       <Page
             class="org.eclipse.amalgam.explorer.activity.ui.api.editor.pages.BasicSessionActivityExplorerPage"
@@ -974,6 +1019,9 @@ To document, get some overview and metrics of the application (non standard repr
                </Description>
             </Activity>
          </Section>
+         <Predicate
+               class="org.obeonetwork.dsl.uml2.design.dashboard.ReviewViewPointPredicate">
+         </Predicate>
       </Page>
       <Page
             class="org.eclipse.amalgam.explorer.activity.ui.api.editor.pages.BasicSessionActivityExplorerPage"
@@ -1017,6 +1065,9 @@ To extend the UML standard for example by defining profile.
                </Description>
             </Activity>
          </Section>
+         <Predicate
+               class="org.obeonetwork.dsl.uml2.design.dashboard.ExtendViewPointPredicate">
+         </Predicate>
       </Page>
       <Page
             class="org.eclipse.amalgam.explorer.activity.ui.api.editor.pages.ActivityExplorerPage"
