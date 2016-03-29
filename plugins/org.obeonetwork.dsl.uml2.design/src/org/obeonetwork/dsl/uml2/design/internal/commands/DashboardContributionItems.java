@@ -23,7 +23,7 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.CompoundContributionItem;
 import org.eclipse.ui.menus.CommandContributionItem;
 import org.eclipse.ui.menus.CommandContributionItemParameter;
-import org.obeonetwork.dsl.uml2.design.internal.services.DashboardServices;
+import org.obeonetwork.dsl.uml2.design.dashboard.FrbDashboardServices;
 import org.obeonetwork.dsl.uml2.design.internal.services.LogServices;
 
 import com.google.common.collect.Lists;
@@ -38,8 +38,7 @@ public class DashboardContributionItems extends CompoundContributionItem {
 	/**
 	 * Open dashboard command.
 	 */
-	public static final String OPEN_DASHBOARD_CMD_ID = "org.obeonetwork.dsl.uml2.actions.openDashboard"; //$NON-NLS-1$
-
+	public static final String OPEN_DASHBOARD_CMD_ID = "org.obeonetwork.dsl.uml2.actions.openDashboard";//$NON-NLS-1$
 	/**
 	 * Model parameter.
 	 */
@@ -64,7 +63,7 @@ public class DashboardContributionItems extends CompoundContributionItem {
 	protected IContributionItem[] getContributionItems() {
 		final List<IContributionItem> menuItems = Lists.newArrayList();
 		// Get all available dashboards
-		final List<EObject> umlModelRoots = DashboardServices.INSTANCE.getUmlModelsWithDashboard();
+		final List<EObject> umlModelRoots = FrbDashboardServices.INSTANCE.getUmlModels();
 		for (final EObject eObject : umlModelRoots) {
 			// Get the project name
 			final IFile resourceFile = ResourcesPlugin.getWorkspace().getRoot()
@@ -76,7 +75,7 @@ public class DashboardContributionItems extends CompoundContributionItem {
 			try {
 				parameters.put(OPEN_DASHBOARD_CMD_PARAM_MODEL_KEY, converter.convertToString(eObject));
 			} catch (final ParameterValueConversionException e) {
-				LogServices.INSTANCE.error("Opening dashboard for project " + projectName + " failed", e); //$NON-NLS-1$ //$NON-NLS-2$
+				LogServices.INSTANCE.error("Opening dashboard for project " + projectName + " failed", e);//$NON-NLS-1$ //$NON-NLS-2$
 			}
 			final CommandContributionItemParameter contributionParameter = new CommandContributionItemParameter(
 					PlatformUI.getWorkbench(), null, OPEN_DASHBOARD_CMD_ID, parameters, null, null, null,

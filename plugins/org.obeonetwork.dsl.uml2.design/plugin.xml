@@ -277,7 +277,7 @@ Contributors:
                commandId="org.obeonetwork.dsl.uml2.actions.newUmlModel">
          </handler>
          <handler
-               class="org.obeonetwork.dsl.uml2.design.dashboard.OpenDashboardFRB"
+               class="org.obeonetwork.dsl.uml2.design.internal.commands.OpenDashboard"
                commandId="org.obeonetwork.dsl.uml2.actions.openDashboard">
             <enabledWhen>
                <reference
@@ -412,7 +412,7 @@ Contributors:
             allPopups="false"
             locationURI="menu:org.obeonetwork.dsl.uml2.actions.openDashboard">
          <dynamic
-               class="org.obeonetwork.dsl.uml2.design.dashboard.DashboardContributionItems"
+               class="org.obeonetwork.dsl.uml2.design.internal.commands.DashboardContributionItems"
                id="org.obeonetwork.dsl.uml2.design.dynamicDashboard">
          </dynamic>
       </menuContribution>
@@ -430,7 +430,7 @@ Contributors:
              class="org.obeonetwork.dsl.uml2.design.internal.testers.UMLViewpointEnablementPropertyTester"
              id="org.obeonetwork.dsl.uml2.design.UMLViewpointEnabled"
              namespace="org.obeonetwork.dsl.uml2.design"
-             properties="viewpointEnabled"
+             properties="UmlViewpointEnabled"
              type="java.lang.Object">
        </propertyTester>
     </extension>
@@ -498,7 +498,7 @@ Contributors:
             id="org.obeonetwork.dsl.uml2.design.UMLViewpointEnabledDefinition">
          <test
                forcePluginActivation="true"
-               property="org.obeonetwork.dsl.uml2.design.viewpointEnabled">
+               property="org.obeonetwork.dsl.uml2.design.UmlViewpointEnabled">
          </test>
       </definition>
    </extension>
@@ -659,7 +659,7 @@ The Overview section lists all the representations that could be created ordered
                   id="org.obeonetwork.dsl.uml2.design.CreateCompositeStructureDiagram"
                   image="icons/dashboard/design/InterfaceRealization.gif"
                   index="4"
-                  name="Create new Comosite Structure diagram">
+                  name="Create new Composite Structure diagram">
                <Description>
                   The composite structure diagram is used to describe the structure of the system by showing the internal structure of classes and the interfaces they used to collaborate.
                </Description>
@@ -875,7 +875,7 @@ To work on the fine grained structure and the behaviours of the application.
                   id="org.obeonetwork.dsl.uml2.design.CreateCompositeStructureDiagram"
                   image="icons/dashboard/design/InterfaceRealization.gif"
                   index="4"
-                  name="Create new Comosite Structure diagram">
+                  name="Create new Composite Structure diagram">
                <Description>
                   The composite structure diagram is used to describe the structure of the system by showing the internal structure of classes and the interfaces they used to collaborate.
                </Description>

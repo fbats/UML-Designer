@@ -31,15 +31,18 @@ public class UMLViewpointEnablementPropertyTester extends PropertyTester {
 
 	private final String vpExtend = "Extend"; //$NON-NLS-1$
 
+	private final String vpReused = "Reused"; //$NON-NLS-1$
+
 	public boolean test(Object receiver, String property, Object[] args, Object expectedValue) {
 		final Collection<Session> sessions = SessionManager.INSTANCE.getSessions();
 		for (final Session session : sessions) {
-			// Check if the dashboard viewpoint is active for the current
+			// Check if an uml designer viewpoint is active for the current
 			// session
 			if (session != null) {
 				for (final Viewpoint vp : session.getSelectedViewpoints(false)) {
 					if (vp.getName().contains(vpCapture) || vp.getName().contains(vpDesgin)
-							|| vp.getName().contains(vpReview) || vp.getName().contains(vpExtend)) {
+							|| vp.getName().contains(vpReview) || vp.getName().contains(vpExtend)
+							|| vp.getName().contains(vpReused)) {
 						return true;
 					}
 				}
