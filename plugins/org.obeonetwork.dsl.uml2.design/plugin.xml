@@ -918,7 +918,7 @@ To work on the fine grained structure and the behaviours of the application.
             imageOff="icons/dashboard/CreateOff.gif"
             imageOn="icons/dashboard/CreateOn.gif"
             index="4"
-            tabName="Overview"
+            tabName="Review"
             title="Review"
             viewer="true">
          <Description>

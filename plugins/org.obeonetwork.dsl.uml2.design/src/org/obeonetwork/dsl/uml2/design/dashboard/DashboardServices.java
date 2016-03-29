@@ -11,6 +11,7 @@
 package org.obeonetwork.dsl.uml2.design.dashboard;
 
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
@@ -46,15 +47,18 @@ public class DashboardServices {
 	 */
 	public List<EObject> getUmlModels() {
 		final List<EObject> results = Lists.newArrayList();
-		// Get all available dashboards
 		final Collection<Session> sessions = SessionManager.INSTANCE.getSessions();
 		for (final Session session : sessions) {
-			for (final Resource resource : session.getTransactionalEditingDomain().getResourceSet()
-					.getResources()) {
-				// FIXME ya un pb si il y a plusieurs UML
+			final Iterator<Resource> iterator = session.getTransactionalEditingDomain().getResourceSet()
+					.getResources().iterator();
+			boolean missingSession = true;
+			while (iterator.hasNext() && missingSession) {
+				final Resource resource = iterator.next();
 				if (resource instanceof UMLResource) {
 					final EObject root = resource.getContents().get(0);
 					results.add(root);
+					// only one dashboard by session is needed
+					missingSession = false;
 				}
 			}
 		}
