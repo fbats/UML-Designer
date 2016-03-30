@@ -2,9 +2,6 @@ package org.obeonetwork.dsl.uml2.design.internal.wizards.newmodel;
 
 import java.lang.reflect.InvocationTargetException;
 
-import org.eclipse.amalgam.explorer.activity.ui.ActivityExplorerActivator;
-import org.eclipse.amalgam.explorer.activity.ui.api.manager.ActivityExplorerManager;
-import org.eclipse.amalgam.explorer.activity.ui.api.preferences.PreferenceConstants;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
@@ -12,14 +9,11 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
-import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
-import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.ext.base.Option;
-import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.ui.wizards.newresource.BasicNewProjectResourceWizard;
 import org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin;
+import org.obeonetwork.dsl.uml2.design.dashboard.DashboardServices;
 import org.obeonetwork.dsl.uml2.design.internal.wizards.Messages;
 
 /**
@@ -44,32 +38,7 @@ public abstract class AbstractNewUmlModelWizard extends BasicNewProjectResourceW
 	 */
 	protected String newUmlModelFileName;
 
-	/**
-	 * Open the dashboard representation containing in the representation file of this Modeling project.
-	 *
-	 * @param curProject
-	 *            The modeling project containing the representations file.
-	 */
-	void openDashboard(IProject curProject){
-		final Option<ModelingProject> opionalModelingProject = ModelingProject.asModelingProject(curProject);
-		if (opionalModelingProject.some()) {
-			final Session session = opionalModelingProject.get().getSession();
-			if (session != null) {
-				// in order to open activity explorer at project creation the preference store
-				// P_OPEN_ACTIVITY_EXPLORER need to be set to true
-				ActivityExplorerActivator.getDefault().getPreferenceStore()
-				.setDefault(PreferenceConstants.P_OPEN_ACTIVITY_EXPLORER, true);
 
-				final IEditorPart part = ActivityExplorerManager.INSTANCE.getEditorFromSession(session);
-				if (part != null) {
-					// Activity explorer already opened
-					PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().activate(part);
-				} else {
-					ActivityExplorerManager.INSTANCE.openEditor(session);
-				}
-			}
-		}
-	}
 
 	@Override
 	/**
@@ -111,7 +80,7 @@ public abstract class AbstractNewUmlModelWizard extends BasicNewProjectResourceW
 				selectAndReveal(newUmlModelFile, PlatformUI.getWorkbench().getActiveWorkbenchWindow());
 
 				// Open the dashboard
-				openDashboard(project);
+				DashboardServices.INSTANCE.openDashboard(project);
 
 				// Open the contextual help
 				// Context ids are defined in the html/contexts.xml file in

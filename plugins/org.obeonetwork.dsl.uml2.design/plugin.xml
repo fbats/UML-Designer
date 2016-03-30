@@ -137,15 +137,15 @@ Contributors:
               name="Open Dashboard">
            <commandParameter
                  id="org.obeonetwork.dsl.uml2.actions.openDashboard.param.model"
-                 name="model"
+                 name="project"
                  optional="true"
                  typeId="org.obeonetwork.dsl.uml2.actions.openDashboard.param.modelType">
            </commandParameter>
         </command>
         <commandParameterType
-              converter="org.obeonetwork.dsl.uml2.design.internal.commands.UmlElementConverter"
+              converter="org.obeonetwork.dsl.uml2.design.dashboard.IProjectConverter"
               id="org.obeonetwork.dsl.uml2.actions.openDashboard.param.modelType"
-              type="org.eclipse.uml2.uml.Model">
+              type="org.eclipse.core.resources.IProject">
         </commandParameterType>
    </extension>
   
