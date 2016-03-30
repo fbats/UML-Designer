@@ -2,7 +2,9 @@ package org.obeonetwork.dsl.uml2.design.internal.wizards.newmodel;
 
 import java.lang.reflect.InvocationTargetException;
 
+import org.eclipse.amalgam.explorer.activity.ui.ActivityExplorerActivator;
 import org.eclipse.amalgam.explorer.activity.ui.api.manager.ActivityExplorerManager;
+import org.eclipse.amalgam.explorer.activity.ui.api.preferences.PreferenceConstants;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
@@ -53,6 +55,11 @@ public abstract class AbstractNewUmlModelWizard extends BasicNewProjectResourceW
 		if (opionalModelingProject.some()) {
 			final Session session = opionalModelingProject.get().getSession();
 			if (session != null) {
+				// in order to open activity explorer at project creation the preference store
+				// P_OPEN_ACTIVITY_EXPLORER need to be set to true
+				ActivityExplorerActivator.getDefault().getPreferenceStore()
+				.setDefault(PreferenceConstants.P_OPEN_ACTIVITY_EXPLORER, true);
+
 				final IEditorPart part = ActivityExplorerManager.INSTANCE.getEditorFromSession(session);
 				if (part != null) {
 					// Activity explorer already opened
