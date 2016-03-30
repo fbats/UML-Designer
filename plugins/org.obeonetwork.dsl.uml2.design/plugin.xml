@@ -586,7 +586,7 @@ The Overview section lists all the representations that could be created ordered
             </Description>
          </Overview>
          <Section
-               expanded="false"
+               expanded="true"
                filtering="true"
                id="org.obeonetwork.dsl.uml2.design.CaptureSection"
                index="1"
@@ -622,7 +622,7 @@ The Overview section lists all the representations that could be created ordered
             </Activity>
          </Section>
          <Section
-               expanded="false"
+               expanded="true"
                filtering="true"
                id="org.obeonetwork.dsl.uml2.design.DesignSection"
                index="2"
@@ -723,7 +723,7 @@ The Overview section lists all the representations that could be created ordered
             </Activity>
          </Section>
          <Section
-               expanded="false"
+               expanded="true"
                filtering="true"
                id="org.obeonetwork.dsl.uml2.design.ReviewSection"
                index="3"
@@ -772,7 +772,7 @@ The Overview section lists all the representations that could be created ordered
             </Activity>
          </Section>
          <Section
-               expanded="false"
+               expanded="true"
                filtering="true"
                id="org.obeonetwork.dsl.uml2.design.ExtendSection"
                index="4"
@@ -1085,7 +1085,7 @@ To extend the UML standard for example by defining profile.
                imageOff="icons/dashboard/HelpOff.gif"
                imageOn="icons/dashboard/HelpOn.gif">
             <Description>
-               &lt;p&gt;&lt;b&gt;UML-Designer documentation&lt;/b&gt;&lt;/p&gt;
+               &lt;p&gt;&lt;b&gt;Documentation&lt;/b&gt;&lt;br/&gt;Documentation and supports entry points.&lt;/p&gt;
             </Description>
          </Overview>
          <Section
@@ -1104,7 +1104,7 @@ To extend the UML standard for example by defining profile.
                   index="1"
                   name="Getting started">
                <Description>
-                  Description body text
+                  How to start using the UML designer either from existing UML models or by creating a new one.
                </Description>
             </Activity>
             <Activity
@@ -1114,7 +1114,7 @@ To extend the UML standard for example by defining profile.
                   index="2"
                   name="Reference documentation">
                <Description>
-                  Description body text
+                  Describe in detail all the features available in UML Designer.
                </Description>
             </Activity>
             <Activity
@@ -1124,7 +1124,7 @@ To extend the UML standard for example by defining profile.
                   index="3"
                   name="User guide">
                <Description>
-                  Description body text
+                  Describe the key functions provided by UML-Designer
                </Description>
             </Activity>
             <Activity
@@ -1134,7 +1134,7 @@ To extend the UML standard for example by defining profile.
                   index="4"
                   name="Developer guide">
                <Description>
-                  Description body text
+                  UML Designer is an open source project and everyone is encouraged to get involved! There are lots of ways you can contribute.
                </Description>
             </Activity>
             <Activity
@@ -1144,7 +1144,7 @@ To extend the UML standard for example by defining profile.
                   index="5"
                   name="Support">
                <Description>
-                  Description body text
+                  Community Supports
                </Description>
             </Activity>
          </Section>
