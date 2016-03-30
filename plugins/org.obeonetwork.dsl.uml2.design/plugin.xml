@@ -794,6 +794,9 @@ The Overview section lists all the representations that could be created ordered
                </Predicate>
             </Activity>
          </Section>
+         <Predicate
+               class="org.obeonetwork.dsl.uml2.design.dashboard.IsAnUmlDesignerProjectPredicate">
+         </Predicate>
       </Page>
       <Page
             class="org.eclipse.amalgam.explorer.activity.ui.api.editor.pages.BasicSessionActivityExplorerPage"
@@ -1148,6 +1151,9 @@ To extend the UML standard for example by defining profile.
                </Description>
             </Activity>
          </Section>
+         <Predicate
+               class="org.obeonetwork.dsl.uml2.design.dashboard.IsAnUmlDesignerProjectPredicate">
+         </Predicate>
       </Page>
    </extension>
 </plugin>
